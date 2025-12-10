@@ -11,7 +11,7 @@ namespace PolRocnyProjekt
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string MovieFiles = folder + @"\Movie.txt";
             string Movies = File.ReadAllText(MovieFiles);
-            Console.WriteLine(Movies + "€");
+            Console.WriteLine(Movies);
         }
 
 
