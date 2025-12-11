@@ -4,18 +4,23 @@
 
 using PolRocnyProjekt;
 
-Console.WriteLine("Vitaj v online systeme rezervacie kina");
-Console.WriteLine("Ukazeme ti zoznam filmov kere sa budu premiet v celom kine");
+
 var usrinput = Console.ReadLine();
 
 if(usrinput == "1")
 {
     Console.Clear();
+    StageA Astage = new StageA();
+    Astage.StageAMovieList();
+    StageA.DrawGridOfSeats();
+    
 }
 
 else if (usrinput == "2")
 {
     Console.Clear();
+    StageB Bstage = new StageB();
+    Bstage.ReadMovieB();  
 }
 
 
@@ -26,7 +31,12 @@ else if (usrinput == "3")
     Cstage.MovieList();
 }
 
-
+else if(usrinput == "4")
+{
+    Console.Clear();
+    StageD Dstage = new StageD();
+    Dstage.ReadMoviesD();
+}
 else if (usrinput == "5")
 {
     Console.Clear();
