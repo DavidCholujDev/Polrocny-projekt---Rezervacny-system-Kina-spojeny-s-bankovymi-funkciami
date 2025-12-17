@@ -6,7 +6,7 @@ namespace PolRocnyProjekt
 {
     internal class StageD : StageA
     {
-        int SeatingSpace = 100;
+        int SeatingSpace = 200;
 
         internal void ReadMoviesD()
         {

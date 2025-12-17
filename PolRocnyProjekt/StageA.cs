@@ -11,52 +11,34 @@ namespace PolRocnyProjekt
 
         int TotalNumberOfSeats = 250;
 
-        internal void StageAMovieList()
+
+        internal string StageAMovieList()
         {
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string MovieFiles = folder + @"\StageAmovies.txt";
             string Movies = File.ReadAllText(MovieFiles);
             Console.WriteLine(Movies);
+            Console.WriteLine("Ktory film si prajes, dobrodruh?");
+            string SpecificedMovie = Console.ReadLine();
+            return SpecificedMovie;
         }
-        internal static void DrawGridOfSeats()
+        internal void Seats(string SpecifiedMovie)
         {
 
-            int rows = 10;
-            int cols = 25;
-
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string SeatPath = folder + @"\SeatsA.txt";
+            string TakenSeats = File.ReadAllText(SeatPath);
+            Console.WriteLine($"Zabrane miesta su {TakenSeats}");
+            Console.WriteLine($"Prajete si film {SpecifiedMovie}. Zadajte cislo miesta o ktore mate zajem. ");
+            var usrinput = Console.ReadLine();
             
-            Console.Write("    "); 
-            for (int col = 0; col < cols; col++)
-            {
-                string label = $"{col + 1}";
-                Console.Write(label.PadLeft(4));
-            }
-            Console.WriteLine();
-
             
-            for (int row = 0; row < rows; row++)
-            {
-                char rowLetter = (char)('A' + row);
-
+            // tu curaj vsunie svoje sedacky pre jednu triedu
             
-                Console.Write($" {rowLetter}  ");
-
-                
-                for (int col = 0; col < cols; col++)
-                    Console.Write("+---");
-                Console.WriteLine("+");
-
-                Console.Write("    ");
-                for (int col = 0; col < cols; col++)
-                    Console.Write("|   ");
-                Console.WriteLine("|");
-            }
-
             
-            Console.Write("    ");
-            for (int col = 0; col < cols; col++)
-                Console.Write("+---");
-            Console.WriteLine("+");
+
+            string text = usrinput + ",";
+            File.AppendAllText(SeatPath, text);
 
 
         }

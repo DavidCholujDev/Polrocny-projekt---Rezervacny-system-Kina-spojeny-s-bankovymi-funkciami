@@ -6,7 +6,7 @@ namespace PolRocnyProjekt
 {
     internal class StageC : StageA
     {
-        int SeatingSpace = 150;
+        int SeatingSpace = 100;
     internal void MovieList()
         {
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);

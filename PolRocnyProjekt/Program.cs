@@ -4,16 +4,17 @@
 
 using PolRocnyProjekt;
 
-
+Console.WriteLine("Vitaj v online systeme Kina, kde si zakupujes listky. Zadaj cislo saly od 1 po 4, ak chces vidiet vsekty filmy zadaj cislo 5");
 var usrinput = Console.ReadLine();
 
 if(usrinput == "1")
 {
     Console.Clear();
     StageA Astage = new StageA();
-    Astage.StageAMovieList();
-    StageA.DrawGridOfSeats();
-    
+    string retVal = Astage.StageAMovieList();
+    Astage.Seats(retVal);
+
+
 }
 
 else if (usrinput == "2")
