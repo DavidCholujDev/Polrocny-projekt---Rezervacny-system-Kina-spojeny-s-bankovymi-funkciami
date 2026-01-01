@@ -33,10 +33,8 @@ namespace PolRocnyProjekt
             var usrinput = Console.ReadLine();
             
             
-            // tu curaj vsunie svoje sedacky pre jednu triedu
+            // tu curaj vsunie svoje sedacky pre jednu triedu 
             
-            
-
             string text = usrinput + ",";
             File.AppendAllText(SeatPath, text);
 
