@@ -6,5 +6,12 @@ namespace PolRocnyProjekt
 {
     internal class AllMovies
     {
+        public void ReadMovies()
+        {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string MovieFiles = folder + @"\Movie.txt";
+            string Movies = File.ReadAllText(MovieFiles);
+            Console.WriteLine(Movies);
+        }
     }
 }

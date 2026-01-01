@@ -41,7 +41,7 @@ else if(usrinput == "4")
 else if (usrinput == "5")
 {
     Console.Clear();
-    Movies ReadMovie = new Movies();
+    AllMovies ReadMovie = new AllMovies();
     ReadMovie.ReadMovies();
 
 }
