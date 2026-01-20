@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-class User
+internal class User
 {
     public void Run()
     {

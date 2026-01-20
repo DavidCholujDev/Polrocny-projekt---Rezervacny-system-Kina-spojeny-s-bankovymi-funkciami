@@ -37,7 +37,7 @@ class Movies
 
         string[] movieData = matchedLine.Split(';');
         string selectedMovie = movieData[0];
-        decimal moviePrice = decimal.Parse(movieData[1]);
+        decimal moviePrice = 27;
 
         Console.WriteLine("Vybrali ste film: " + selectedMovie);
         Console.WriteLine("Cena filmu: " + moviePrice + " €");
@@ -84,7 +84,7 @@ class Movies
         }
 
         Console.WriteLine("Celková cena: " + totalPrice + " €");
-        Console.WriteLine("Stlačte kláves pre ukončenie...");
+        Console.WriteLine("Stlačte kláves pre posun dalej");
         Console.ReadKey();
     }
 }

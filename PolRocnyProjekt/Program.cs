@@ -18,6 +18,8 @@ if(usrinput == "1")
     //Astage.Seats(retVal);
     Movies m = new Movies();
     m.Run(retVal, "StageAmovies.txt");
+   User usr = new User();
+    usr.Run();
 }
 
 else if (usrinput == "2")
