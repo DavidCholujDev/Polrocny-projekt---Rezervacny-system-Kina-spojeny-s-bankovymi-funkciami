@@ -1,159 +1,91 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-// this code was provided by kolkus via a different repository 
-// check davideveloper github profile, said repository is forked as his
+﻿namespace PolRocnyProjekt;
 
-namespace PolRocnyProjekt
+
+
+class Movies
 {
-      internal class Movies
-      {
-            public void Main()
-            {
-                string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string fileName = "Movie.txt";
-                string fileLocale = Path.Combine(folder, fileName);
-                if (!File.Exists(fileLocale))
+    public void Run(string selectedMovieFromStageA, string fileName)
+    {
+        string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
+        string filePath = Path.Combine(folder, fileName);
+
+
+
+        string[] movies = File.ReadAllLines(filePath);
+
+
+        string matchedLine = null;
+
+        foreach (string line in movies)
+        {
+            
+            
+                if (line.Contains(selectedMovieFromStageA, StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("Súbor s používateľskými filmami neexistuje.");
-                    Console.ReadKey();
-                    return;
-                }
-
-                string[] movies = File.ReadAllLines(fileLocale);
-
-                if (movies.Length == 0)
-                {
-                    Console.WriteLine("Súbor je prázdny.");
-                    Console.ReadKey();
-                    return;
-                }
-
-                Console.WriteLine("Dostupné filmy:");
-                for (int i = 0; i < movies.Length; i++)
-                {
-                    Console.WriteLine((i + 1) + ". " + movies[i]);
-                }
-
-                int choice = 0;
-
-                while (true)
-                {
-                    Console.Write("\nVyberte číslo filmu (1 - 20): ");
-                    string input = Console.ReadLine();
-
-                    if (!int.TryParse(input, out choice))
-                    {
-                        Console.WriteLine("Nesprávny film, skúste to znova.");
-                        continue;
-                    }
-
-                    if (choice < 01 || choice > 20)
-                    {
-                        Console.WriteLine("Nesprávny film, skúste to znova.");
-                        continue;
-                    }
-
+                    matchedLine = line;
                     break;
                 }
+            
 
-                string selectedAccount = movies[choice - 1];
-                Console.WriteLine("Vybrali ste účet: " + selectedAccount);
+        }
 
-                Console.WriteLine("Ak by ste chceli, tak ponúkame aj snacky.");
-                Console.WriteLine("Pre snack zadajte 'A', pre žiadny snack zadajte 'N'.");
-                Console.Write("> ");
+        if (matchedLine == null)
+        {
+            Console.WriteLine("Film nebol nájdený v subore");
+            return;
+        }
 
-                string input_ = Console.ReadLine();
-                Dictionary<string, int> selectedSnacks = new Dictionary<string, int>();
+        string[] movieData = matchedLine.Split(';');
+        string selectedMovie = movieData[0];
+        decimal moviePrice = decimal.Parse(movieData[1]);
 
-                if (input_.ToUpper() == "A")
-                {
-                    Console.WriteLine("Ponúkame tieto snacky: ");
-                    Console.WriteLine("1. Popcorn - 2 eura");
-                    Console.WriteLine("2. Nachos - 2,50 eur");
-                    Console.WriteLine("3. Sladkosti - 1 euro");
-                    Console.WriteLine("4. Nápoje - Coca Cola, Nestea, Minerálka - 2,50 eur");
-                    Console.WriteLine("Zadajte číslo snacku alebo napíšte 'to je všetko'.");
+        Console.WriteLine("Vybrali ste film: " + selectedMovie);
+        Console.WriteLine("Cena filmu: " + moviePrice + " €");
 
-                    while (true)
-                    {
-                        Console.Write("> ");
-                        string snackChoice = Console.ReadLine();
+        decimal totalPrice = moviePrice;
+        Console.WriteLine("Chcete občerstvenie? A = áno, N = nie");
+        string snackChoice = Console.ReadLine().ToUpper();
 
-                        if (snackChoice.ToLower() == "to je všetko")
-                        {
+        decimal popcornPrice = 2m;
+        decimal nachosPrice = 2.5m;
+        decimal sladPrice = 1m;
+        decimal drinkPrice = 2.5m;
 
-                        }
+        if (snackChoice == "A")
+        {
+            Console.WriteLine("1) Popcorn 2m  2) Nachos 2.5m  3) Sladkosti 1m  4) Nápoj 2.5m");
+            Console.Write("Vyber číslo: ");
+            string snackNum = Console.ReadLine();
 
-                        string snackName = "";
-
-                        switch (snackChoice)
-                        {
-                            case "1":
-                                snackName = "Popcorn";
-                                break;
-                            case "2":
-                                snackName = "Nachos";
-                                break;
-                            case "3":
-                                snackName = "Sladkosti";
-                                break;
-                            case "4":
-                                snackName = "Nápoje";
-                                break;
-                            default:
-                                Console.WriteLine("Neplatný výber, skúste znova.");
-                                continue;
-                        }
-
-                        Console.Write("Zadajte počet kusov: ");
-                        if (int.TryParse(Console.ReadLine(), out int count) && count > 0)
-                        {
-                            if (selectedSnacks.ContainsKey(snackName))
-                            {
-                                selectedSnacks[snackName] += count;
-                            }
-                            else
-                            {
-                                selectedSnacks.Add(snackName, count);
-                            }
-
-                            Console.WriteLine($"{snackName} – pridané {count} ks.");
-
-                        }
-                        else
-                        {
-                            Console.WriteLine("Neplatný počet.");
-
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Rozumiem, žiadny snack.");
-
-
-                    Console.WriteLine("\nVybrali ste si tieto snacky:");
-
-                    if (selectedSnacks.Count == 0)
-                    {
-                        Console.WriteLine("Žiadne snacky.");
-                    }
-                    else
-                    {
-                        foreach (var snack in selectedSnacks)
-                        {
-                            Console.WriteLine($"- {snack.Key}: {snack.Value} ks");
-                        }
-                    }
-
-                    Console.ReadKey();
-                }
+            if (snackNum == "1")
+            {
+                totalPrice += popcornPrice;
+                Console.WriteLine("Pridaný Popcorn 2m");
+            }
+            else if (snackNum == "2")
+            {
+                totalPrice += nachosPrice;
+                Console.WriteLine("Pridané Nachos 2.5m");
+            }
+            else if (snackNum == "3")
+            {
+                totalPrice += sladPrice;
+                Console.WriteLine("Pridané Sladkosti 1m");
+            }
+            else if (snackNum == "4")
+            {
+                totalPrice += drinkPrice;
+                Console.WriteLine("Pridaný Nápoj 2.5m");
+            }
+            else
+            {
+                Console.WriteLine("Žiadne občerstvenie pridané.");
             }
         }
- }
 
-
-
+        Console.WriteLine("Celková cena: " + totalPrice + " €");
+        Console.WriteLine("Stlačte kláves pre ukončenie...");
+        Console.ReadKey();
+    }
+}
 

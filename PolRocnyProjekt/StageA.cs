@@ -22,7 +22,8 @@ namespace PolRocnyProjekt
             string SpecificedMovie = Console.ReadLine();
             return SpecificedMovie;
         }
-        internal void Seats(string SpecifiedMovie)
+        
+        internal void Seats(string  SpecifiedMovie)
         {
 
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
