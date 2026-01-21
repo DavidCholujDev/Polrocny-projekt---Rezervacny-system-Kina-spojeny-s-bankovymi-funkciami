@@ -5,14 +5,14 @@ using System.Text;
 
 namespace PolRocnyProjekt
 {
-    internal class StageA
+    internal class Stage
     {
 
 
         int TotalNumberOfSeats = 250;
 
 
-        internal string StageAMovieList()
+        internal string StageA()
         {
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string MovieFiles = folder + @"\StageAmovies.txt";
@@ -22,23 +22,24 @@ namespace PolRocnyProjekt
             string SpecificedMovie = Console.ReadLine();
             return SpecificedMovie;
         }
-        
-        internal void Seats(string  SpecifiedMovie)
+        internal string StageB()
         {
-
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string SeatPath = folder + @"\SeatsA.txt";
-            string TakenSeats = File.ReadAllText(SeatPath);
-            Console.WriteLine($"Zabrane miesta su {TakenSeats}");
-            Console.WriteLine($"Prajete si film {SpecifiedMovie}. Zadajte cislo miesta o ktore mate zajem. ");
-            var usrinput = Console.ReadLine();
+            string MovieFiles = folder + @"\StageBmovies.txt";
+            string Movies = File.ReadAllText(MovieFiles);
+            Console.WriteLine(Movies);
+            string specifiedMovie = Console.ReadLine();
+            return specifiedMovie;
+        }
+        internal string StageC()
+        {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string MovieFiles = folder + @"\StageCmovies.txt";
+            string Movies = File.ReadAllText(MovieFiles);
+            Console.WriteLine(Movies);
+            string specifiedMovie = Console.ReadLine();
+            return specifiedMovie;
             
-            
-            // tu curaj vsunie svoje sedacky pre jednu triedu 
-            
-            string text = usrinput + ",";
-            File.AppendAllText(SeatPath, text);
-
 
         }
     }

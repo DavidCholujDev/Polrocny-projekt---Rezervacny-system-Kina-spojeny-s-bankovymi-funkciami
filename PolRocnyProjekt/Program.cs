@@ -7,50 +7,43 @@
 
 using PolRocnyProjekt;
 
+
+Console.SetCursorPosition(30, 50);
 Console.WriteLine("Vitaj v online systeme Kina, kde si zakupujes listky. Zadaj cislo saly od 1 po 4, ak chces vidiet vsekty filmy zadaj cislo 5");
 var usrinput = Console.ReadLine();
 
 if(usrinput == "1")
 {
     Console.Clear();
-    StageA Astage = new StageA();
-    string retVal = Astage.StageAMovieList();
-    //Astage.Seats(retVal);
+    Stage Astage = new Stage();
+    string retVal = Astage.StageA();
     Movies m = new Movies();
     m.Run(retVal, "StageAmovies.txt");
    User usr = new User();
     usr.Run();
-    Console.WriteLine("dakujeme za navstevu, zbohom");
-    
+    Console.WriteLine("dakujeme za navstevu, zbohom"); 
 }
 
 else if (usrinput == "2")
 {
     Console.Clear();
-    StageB Bstage = new StageB();
-    Bstage.ReadMovieB();
-    Movies m = new Movies();
-    m.Run(usrinput ,"StageBmovies.txt");
-    User usr = new User();
-    usr.Run();
-    Console.WriteLine("dakujeme za navstevu, zbohom");
+    Stage bstage = new Stage();
+    bstage.StageB();
+   
    
 }
-
 
 
 else if (usrinput == "3")
 {
     Console.Clear();
-    StageC Cstage = new StageC();
-    Cstage.MovieList();
+    
 }
 
 else if(usrinput == "4")
 {
     Console.Clear();
-    StageD Dstage = new StageD();
-    Dstage.ReadMoviesD();
+   
 }
 else if (usrinput == "5")
 {
