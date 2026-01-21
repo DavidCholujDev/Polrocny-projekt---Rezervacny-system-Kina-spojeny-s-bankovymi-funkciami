@@ -1,48 +1,50 @@
 ﻿namespace PolRocnyProjekt;
 
 
-
 class Movies
 {
-    public void Run(string selectedMovieFromStageA, string fileName)
+    public string Run(string SpecifiedMovie, string fileName)
     {
-        string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
+        string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         string filePath = Path.Combine(folder, fileName);
 
+        int linenumber = 0;
 
 
         string[] movies = File.ReadAllLines(filePath);
 
 
-        string matchedLine = null;
+        string matchedLine = "0";
 
         foreach (string line in movies)
         {
             
             
-                if (line.Contains(selectedMovieFromStageA, StringComparison.OrdinalIgnoreCase))
+                if (line.Contains(SpecifiedMovie, StringComparison.OrdinalIgnoreCase))
                 {
                     matchedLine = line;
                     break;
-                }
+             
+            }
+            if (linenumber % 2 == 0)
+            {
+
+            }
+            linenumber ++;
             
 
         }
 
-        if (matchedLine == null)
-        {
-            Console.WriteLine("Film nebol nájdený v subore");
-            return;
-        }
+
 
         string[] movieData = matchedLine.Split(';');
         string selectedMovie = movieData[0];
-        decimal moviePrice = 27;
+       
 
         Console.WriteLine("Vybrali ste film: " + selectedMovie);
-        Console.WriteLine("Cena filmu: " + moviePrice + " €");
+        
 
-        decimal totalPrice = moviePrice;
+        decimal totalPrice = 55;
         Console.WriteLine("Chcete občerstvenie? A = áno, N = nie");
         string snackChoice = Console.ReadLine().ToUpper();
 
@@ -81,11 +83,13 @@ class Movies
             {
                 Console.WriteLine("Žiadne občerstvenie pridané.");
             }
+            return snackNum;
         }
 
         Console.WriteLine("Celková cena: " + totalPrice + " €");
         Console.WriteLine("Stlačte kláves pre posun dalej");
         Console.ReadKey();
+        return selectedMovie;
     }
 }
 

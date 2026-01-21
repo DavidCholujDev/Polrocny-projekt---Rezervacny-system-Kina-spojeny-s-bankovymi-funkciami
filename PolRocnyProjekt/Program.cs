@@ -20,14 +20,23 @@ if(usrinput == "1")
     m.Run(retVal, "StageAmovies.txt");
    User usr = new User();
     usr.Run();
+    Console.WriteLine("dakujeme za navstevu, zbohom");
+    
 }
 
 else if (usrinput == "2")
 {
     Console.Clear();
     StageB Bstage = new StageB();
-    Bstage.ReadMovieB();  
+    Bstage.ReadMovieB();
+    Movies m = new Movies();
+    m.Run(usrinput ,"StageBmovies.txt");
+    User usr = new User();
+    usr.Run();
+    Console.WriteLine("dakujeme za navstevu, zbohom");
+   
 }
+
 
 
 else if (usrinput == "3")

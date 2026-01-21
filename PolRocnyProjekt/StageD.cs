@@ -8,12 +8,14 @@ namespace PolRocnyProjekt
     {
         int SeatingSpace = 200;
 
-        internal void ReadMoviesD()
+        internal string ReadMoviesD()
         {
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string MovieFiles = folder + @"\StageDmovies.txt";
             string Movies = File.ReadAllText(MovieFiles);
             Console.WriteLine(Movies);
+            var usrinput = Console.ReadLine();
+            return usrinput;
         }
     }
 }

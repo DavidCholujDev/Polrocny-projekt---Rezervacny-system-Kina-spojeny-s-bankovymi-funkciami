@@ -8,12 +8,14 @@ namespace PolRocnyProjekt
     internal class StageB : StageA
     {
         int SeatingSpace = 150;
-      internal void ReadMovieB()
+      internal string ReadMovieB()
         {
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string MovieFiles = folder + @"\StageBmovies.txt";
             string Movies = File.ReadAllText(MovieFiles);
             Console.WriteLine(Movies);
+            var usrinput = Console.ReadLine();
+            return usrinput;
         }
     }
 
