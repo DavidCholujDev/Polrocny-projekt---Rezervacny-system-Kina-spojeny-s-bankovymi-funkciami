@@ -1,8 +1,6 @@
 ﻿// made by @vajconos , gpt  @david_chol1 on instagram
 //sponsored by Kros a. s
 
-// matej kolkus posiela AI kod ktory ani nefunguje, nasledne je to moja a curajova robota to sprovoznit. Uz nikdy viac
-// mam nanho nervy dva dni mu to tu opravujem , je mozne ze ten projekt nestihnem kvoli takemu imbecilovi
 
 
 using PolRocnyProjekt;
