@@ -17,8 +17,13 @@ if(usrinput == "1")
     string retVal = Astage.StageA();
     Movies m = new Movies();
     m.Run(retVal, "StageAmovies.txt");
-   User usr = new User();
+    Console.WriteLine("Zadaj cenu filmu prosim");
+    string l = Console.ReadLine();
+    decimal prajs = decimal.Parse(l);
+    Movies.ChooseSnack( prajs);
+    User usr = new User();
     usr.Run();
+    m.calc(prajs);
     Console.WriteLine("dakujeme za navstevu, zbohom"); 
 }
 

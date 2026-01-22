@@ -3,12 +3,13 @@
 
 class Movies
 {
-    public string Run(string SpecifiedMovie, string fileName)
+    public void Run(string SpecifiedMovie, string fileName)
     {
         string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         string filePath = Path.Combine(folder, fileName);
 
-        int linenumber = 0;
+
+
 
 
         string[] movies = File.ReadAllLines(filePath);
@@ -18,41 +19,50 @@ class Movies
 
         foreach (string line in movies)
         {
-            
-            
-                if (line.Contains(SpecifiedMovie, StringComparison.OrdinalIgnoreCase))
-                {
-                    matchedLine = line;
-                    break;
-             
-            }
-            if (linenumber % 2 == 0)
+
+
+            if (line.Contains(SpecifiedMovie, StringComparison.OrdinalIgnoreCase))
             {
+                matchedLine = line;
+                break;
 
             }
-            linenumber ++;
-            
+
+
 
         }
 
 
 
         string[] movieData = matchedLine.Split(';');
-        string selectedMovie = movieData[0];
-       
 
-        Console.WriteLine("Vybrali ste film: " + selectedMovie);
-        
 
-        decimal totalPrice = 55;
+
+        Console.WriteLine("Vybrali ste film: " + SpecifiedMovie);
+
+
+
+
+
+
+
+
+        Console.WriteLine("Stlačte kláves pre posun dalej");
+        Console.ReadKey();
+
+    }
+
+
+    internal static decimal ChooseSnack(decimal prajs)
+    {
         Console.WriteLine("Chcete občerstvenie? A = áno, N = nie");
         string snackChoice = Console.ReadLine().ToUpper();
-
-        decimal popcornPrice = 2m;
-        decimal nachosPrice = 2.5m;
-        decimal sladPrice = 1m;
-        decimal drinkPrice = 2.5m;
-
+        decimal popcorn = 2.5m;
+        decimal nacho = 1.99m;
+        decimal candy = 4m;
+        decimal soda = 4.99m;
+        decimal totalPrice = prajs;
+        decimal finalprice = totalPrice;
         if (snackChoice == "A")
         {
             Console.WriteLine("1) Popcorn 2m  2) Nachos 2.5m  3) Sladkosti 1m  4) Nápoj 2.5m");
@@ -61,35 +71,38 @@ class Movies
 
             if (snackNum == "1")
             {
-                totalPrice += popcornPrice;
-                Console.WriteLine("Pridaný Popcorn 2m");
+                finalprice = totalPrice + popcorn;
+                Console.WriteLine("Pridaný Popcorn ");
             }
             else if (snackNum == "2")
             {
-                totalPrice += nachosPrice;
-                Console.WriteLine("Pridané Nachos 2.5m");
+                 finalprice = totalPrice + nacho;
+                Console.WriteLine("Pridané Nachos ");
             }
             else if (snackNum == "3")
             {
-                totalPrice += sladPrice;
-                Console.WriteLine("Pridané Sladkosti 1m");
+                finalprice = totalPrice + candy;
+                Console.WriteLine("Pridané Sladkosti ");
             }
             else if (snackNum == "4")
             {
-                totalPrice += drinkPrice;
-                Console.WriteLine("Pridaný Nápoj 2.5m");
+                finalprice = totalPrice + soda;
+                Console.WriteLine("Pridaný Nápoj");
             }
             else
             {
                 Console.WriteLine("Žiadne občerstvenie pridané.");
             }
-            return snackNum;
+            
         }
+        return finalprice;
+    }
 
-        Console.WriteLine("Celková cena: " + totalPrice + " €");
-        Console.WriteLine("Stlačte kláves pre posun dalej");
-        Console.ReadKey();
-        return selectedMovie;
+
+    public void calc(decimal finalprice)
+    {
+        // i recommend reading calc.cs
+        Console.WriteLine(finalprice);
     }
 }
 
